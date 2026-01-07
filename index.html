@@ -43,7 +43,7 @@
         /* Hero Section */
         .hero {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 48px;
         }
 
         .logo {
@@ -82,97 +82,176 @@
             color: var(--success);
         }
 
-        /* Download Cards */
-        .downloads {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin-bottom: 60px;
-        }
-
-        .download-card {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            padding: 28px;
-            transition: all 0.3s ease;
+        /* Main Download (OS 감지된 것) */
+        .main-download {
+            background: linear-gradient(135deg, var(--bg-secondary), #1a2332);
+            border: 2px solid var(--accent);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 40px;
+            text-align: center;
             position: relative;
             overflow: hidden;
         }
 
-        .download-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(88, 166, 255, 0.15);
-        }
-
-        .download-card::before {
+        .main-download::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent), #a371f7);
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            height: 4px;
+            background: linear-gradient(90deg, var(--accent), #a371f7, var(--accent));
         }
 
-        .download-card:hover::before {
-            opacity: 1;
+        .main-download .detected-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--bg-primary);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
-        .platform-icon {
-            font-size: 2.5rem;
+        .main-download .platform-icon {
+            font-size: 4rem;
             margin-bottom: 16px;
         }
 
-        .platform-name {
-            font-size: 1.25rem;
+        .main-download .platform-name {
+            font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
         }
 
-        .platform-arch {
-            font-size: 0.85rem;
+        .main-download .platform-arch {
+            font-size: 1rem;
             color: var(--text-secondary);
-            margin-bottom: 20px;
+            margin-bottom: 28px;
             font-family: 'JetBrains Mono', monospace;
         }
 
-        .download-btn {
+        .main-download .download-btn {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             background: var(--accent);
             color: var(--bg-primary);
             text-decoration: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.95rem;
-            transition: all 0.2s ease;
-            width: 100%;
-            justify-content: center;
+            padding: 18px 48px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(88, 166, 255, 0.3);
         }
 
-        .download-btn:hover {
+        .main-download .download-btn:hover {
             background: var(--accent-hover);
-            transform: scale(1.02);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(88, 166, 255, 0.4);
         }
 
-        .download-btn svg {
-            width: 18px;
-            height: 18px;
+        .main-download .download-btn svg {
+            width: 24px;
+            height: 24px;
         }
 
-        .file-size {
+        .main-download .file-name {
             display: block;
-            text-align: center;
-            margin-top: 12px;
-            font-size: 0.8rem;
+            margin-top: 16px;
+            font-size: 0.85rem;
             color: var(--text-secondary);
             font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Other Downloads Section */
+        .other-downloads-section {
+            margin-bottom: 48px;
+        }
+
+        .other-downloads-section h3 {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .other-downloads {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .other-download-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 16px 24px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: var(--text-primary);
+            min-width: 200px;
+        }
+
+        .other-download-card:hover {
+            border-color: var(--accent);
+            background: var(--bg-tertiary);
+        }
+
+        .other-download-card .platform-icon {
+            font-size: 1.5rem;
+        }
+
+        .other-download-card .info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .other-download-card .platform-name {
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        .other-download-card .platform-arch {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin-bottom: 40px;
+        }
+
+        .feature {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .feature-text {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
         }
 
         /* Installation Guide */
@@ -263,32 +342,6 @@
             color: var(--accent);
         }
 
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
-            margin-bottom: 40px;
-        }
-
-        .feature {
-            background: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .feature-icon {
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-        }
-
-        .feature-text {
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -315,6 +368,13 @@
             .container {
                 padding: 40px 16px;
             }
+            .main-download {
+                padding: 32px 20px;
+            }
+            .main-download .download-btn {
+                padding: 16px 32px;
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
@@ -325,57 +385,27 @@
             <img src="https://raw.githubusercontent.com/librorum/jkDir-release/main/assets/jkdir-icon.png" alt="jkDir" class="logo" onerror="this.style.display='none'">
             <h1>jkDir</h1>
             <p class="tagline">강력하고 현대적인 파일 탐색기</p>
-            <span class="version-badge" id="version">v0.5.6</span>
+            <span class="version-badge" id="version">v0.5.7</span>
         </section>
 
-        <!-- Downloads -->
-        <section class="downloads" id="downloads">
-            <!-- macOS Apple Silicon -->
-            <div class="download-card">
-                <div class="platform-icon">🍎</div>
-                <div class="platform-name">macOS</div>
-                <div class="platform-arch">Apple Silicon (M1/M2/M3)</div>
-                <a href="https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-macos-arm64.zip" class="download-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    다운로드
-                </a>
-                <span class="file-size">jkdir-macos-arm64.zip</span>
-            </div>
+        <!-- Main Download (OS 감지) -->
+        <section class="main-download" id="main-download">
+            <span class="detected-badge" id="detected-badge">🔍 사용자 OS 감지됨</span>
+            <div class="platform-icon" id="main-icon">🍎</div>
+            <div class="platform-name" id="main-name">macOS</div>
+            <div class="platform-arch" id="main-arch">Apple Silicon (M1/M2/M3)</div>
+            <a href="#" class="download-btn" id="main-btn">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
+                다운로드
+            </a>
+            <span class="file-name" id="main-file">jkdir-macos-arm64.zip</span>
+        </section>
 
-            <!-- macOS Intel -->
-            <div class="download-card">
-                <div class="platform-icon">🍎</div>
-                <div class="platform-name">macOS</div>
-                <div class="platform-arch">Intel (x86_64)</div>
-                <a href="https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-macos-x86_64.zip" class="download-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    다운로드
-                </a>
-                <span class="file-size">jkdir-macos-x86_64.zip</span>
-            </div>
-
-            <!-- Windows -->
-            <div class="download-card">
-                <div class="platform-icon">🪟</div>
-                <div class="platform-name">Windows</div>
-                <div class="platform-arch">x86_64</div>
-                <a href="https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-windows-x86_64.exe" class="download-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    다운로드
-                </a>
-                <span class="file-size">jkdir-windows-x86_64.exe</span>
-            </div>
-
-            <!-- Linux -->
-            <div class="download-card">
-                <div class="platform-icon">🐧</div>
-                <div class="platform-name">Linux</div>
-                <div class="platform-arch">x86_64</div>
-                <a href="https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-linux-x86_64.tar.gz" class="download-btn">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-                    다운로드
-                </a>
-                <span class="file-size">jkdir-linux-x86_64.tar.gz</span>
+        <!-- Other Downloads -->
+        <section class="other-downloads-section">
+            <h3>다른 플랫폼</h3>
+            <div class="other-downloads" id="other-downloads">
+                <!-- JS로 동적 생성 -->
             </div>
         </section>
 
@@ -404,9 +434,9 @@
             <h2>📦 설치 방법</h2>
             
             <div class="install-tabs">
-                <button class="install-tab active" onclick="showInstall('macos')">macOS</button>
-                <button class="install-tab" onclick="showInstall('windows')">Windows</button>
-                <button class="install-tab" onclick="showInstall('linux')">Linux</button>
+                <button class="install-tab active" data-os="macos" onclick="showInstall('macos')">macOS</button>
+                <button class="install-tab" data-os="windows" onclick="showInstall('windows')">Windows</button>
+                <button class="install-tab" data-os="linux" onclick="showInstall('linux')">Linux</button>
             </div>
 
             <div id="install-macos" class="install-content active">
@@ -442,16 +472,119 @@
     </div>
 
     <script>
+        // 다운로드 정보
+        const downloads = {
+            'macos-arm64': {
+                icon: '🍎',
+                name: 'macOS',
+                arch: 'Apple Silicon (M1/M2/M3)',
+                file: 'jkdir-macos-arm64.zip',
+                url: 'https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-macos-arm64.zip',
+                os: 'macos'
+            },
+            'macos-x64': {
+                icon: '🍎',
+                name: 'macOS',
+                arch: 'Intel (x86_64)',
+                file: 'jkdir-macos-x86_64.zip',
+                url: 'https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-macos-x86_64.zip',
+                os: 'macos'
+            },
+            'windows': {
+                icon: '🪟',
+                name: 'Windows',
+                arch: 'x86_64',
+                file: 'jkdir-windows-x86_64.exe',
+                url: 'https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-windows-x86_64.exe',
+                os: 'windows'
+            },
+            'linux': {
+                icon: '🐧',
+                name: 'Linux',
+                arch: 'x86_64',
+                file: 'jkdir-linux-x86_64.tar.gz',
+                url: 'https://github.com/librorum/jkDir-release/releases/latest/download/jkdir-linux-x86_64.tar.gz',
+                os: 'linux'
+            }
+        };
+
+        // OS 감지
+        function detectOS() {
+            const ua = navigator.userAgent.toLowerCase();
+            const platform = navigator.platform.toLowerCase();
+            
+            if (ua.includes('win')) {
+                return 'windows';
+            } else if (ua.includes('mac')) {
+                // Apple Silicon 감지 시도
+                // WebGL 렌더러로 Apple GPU 확인
+                try {
+                    const canvas = document.createElement('canvas');
+                    const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+                    if (gl) {
+                        const debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (debugInfo) {
+                            const renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL);
+                            if (renderer.includes('Apple M') || renderer.includes('Apple GPU')) {
+                                return 'macos-arm64';
+                            }
+                        }
+                    }
+                } catch (e) {}
+                return 'macos-x64'; // 기본값: Intel
+            } else if (ua.includes('linux')) {
+                return 'linux';
+            }
+            return 'macos-arm64'; // 기본값
+        }
+
+        // 메인 다운로드 설정
+        function setMainDownload(key) {
+            const data = downloads[key];
+            document.getElementById('main-icon').textContent = data.icon;
+            document.getElementById('main-name').textContent = data.name;
+            document.getElementById('main-arch').textContent = data.arch;
+            document.getElementById('main-btn').href = data.url;
+            document.getElementById('main-file').textContent = data.file;
+            
+            // 다른 다운로드 목록 생성
+            const otherContainer = document.getElementById('other-downloads');
+            otherContainer.innerHTML = '';
+            
+            for (const [k, v] of Object.entries(downloads)) {
+                if (k !== key) {
+                    const card = document.createElement('a');
+                    card.className = 'other-download-card';
+                    card.href = v.url;
+                    card.innerHTML = `
+                        <span class="platform-icon">${v.icon}</span>
+                        <div class="info">
+                            <span class="platform-name">${v.name}</span>
+                            <span class="platform-arch">${v.arch}</span>
+                        </div>
+                    `;
+                    otherContainer.appendChild(card);
+                }
+            }
+            
+            // 설치 가이드 탭 활성화
+            showInstall(data.os);
+        }
+
+        // 설치 가이드 탭 전환
         function showInstall(platform) {
-            // Hide all
             document.querySelectorAll('.install-content').forEach(el => el.classList.remove('active'));
             document.querySelectorAll('.install-tab').forEach(el => el.classList.remove('active'));
             
-            // Show selected
             document.getElementById('install-' + platform).classList.add('active');
-            event.target.classList.add('active');
+            document.querySelector(`.install-tab[data-os="${platform}"]`).classList.add('active');
         }
+
+        // 초기화
+        document.addEventListener('DOMContentLoaded', () => {
+            const detectedOS = detectOS();
+            setMainDownload(detectedOS);
+        });
     </script>
 </body>
 </html>
-
